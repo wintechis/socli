@@ -1,0 +1,15 @@
+# python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.ruff_cache
+
+# databases
+.db.toml
+.socli.config.toml
+
+# virtual environments
+.venv
