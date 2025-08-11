@@ -21,21 +21,21 @@ A command-line interface for interacting with Community Solid Server (CSS), prov
 
 ## Installation
 
-### Option 1: Install from Source (Development)
+### Option 1: Development (currently preferred)
 
 ```bash
 # Clone repository
 git clone <repository-url>
 cd socli
 
-# Install with uv (recommended for development)
-uv install
+# recommended for development
+uv sync
 
 # Run in development mode
-uv run socli --help
+socli --help
 ```
 
-### Option 2: Build and Install Locally (preferred)
+### Option 2: Build and Install Locally (preliminary)
 
 ```bash
 # Clone repository

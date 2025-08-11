@@ -66,11 +66,9 @@ class UserDB:
 
     users: list[User]
     _index: dict[str, User] = field(default_factory=dict, init=False, skip=True)
-    _cache: DatabaseCache = field(default_factory=DatabaseCache, init=False, skip=True)
 
     def __post_init__(self):
         self._index = {user.role: user for user in self.users}
-        self._cache = DatabaseCache()
 
     def get_user_by_role(self, role: str) -> User | None:
         return self._index.get(role)
