@@ -30,6 +30,8 @@ cd socli
 
 # recommended for development
 uv sync
+# activate venv (watch out for your shell!)
+. .venv/bin/activate.fish
 
 # Run in development mode
 socli --help
@@ -59,7 +61,7 @@ The CLI is accessed through `uv run socli` or `socli` followed by a command and 
 #### Add a New User
 
 ```bash
-uv run socli add \
+socli add \
   --role myuser \
   --email user@example.com \
   --password <password> \
@@ -163,7 +165,7 @@ Options:
 #### Interactive Inbox Viewer
 
 ```bash
-uv run socli inbox --role myuser
+socli inbox --role myuser
 ```
 
 This opens an interactive session where you can:
@@ -207,11 +209,15 @@ socli add \
 socli status
 
 # 3. Upload a file publicly
-echo "Hello Solid World" | uv run socli put \
+socli put \
   --role alice \
   --uri https://solid.example.com/alice/public/hello.txt \
-  --data - \
+  --data ./dprod.jsonld \
   --status public
+# or
+echo "Hello Solid World" | socli put \
+  --role alice \
+  --uri https://solid.example.com/alice/public/hello.txt \
 
 # 4. Fetch the file
 socli get --role alice --uri https://solid.example.com/alice/public/hello.txt
