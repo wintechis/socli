@@ -4,11 +4,14 @@ import tomli_w
 
 from pathlib import Path
 from typing import Optional
-from serde import serde, field
+from serde.se import serialize
+from serde.de import deserialize
+from serde.core import field
 from loguru import logger
 
 
-@serde
+@serialize
+@deserialize
 class Config:
     """Configuration for socli CLI."""
 

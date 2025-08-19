@@ -4,18 +4,22 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
 from loguru import logger
-from serde import serde, Untagged, field
+from serde.se import serialize
+from serde.de import deserialize
+from serde.core import Untagged, field
 from serde.toml import from_toml, to_toml
 
 
-@serde
+@serialize
+@deserialize
 class Token:
     id: str
     secret: str
     resource: str
 
 
-@serde
+@serialize
+@deserialize
 class User:
     role: str
     email: str
@@ -60,7 +64,8 @@ class DatabaseCache:
                 logger.debug(f"Cache invalidated for {path}")
 
 
-@serde(tagging=Untagged)
+@serialize
+@deserialize(tagging=Untagged)
 class UserDB:
     """Database of users with their roles and tokens."""
 
